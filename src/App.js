@@ -14,16 +14,27 @@ function App() {
       ]
   })
 
-  const changeName = (event) => {
-    setName(event.target.value)
+  const changeName = event => {
+    setName({
+      persons:
+        [
+          { name: 'Susanna', age: 35 },
+          { name: event.target.value, age: 35 },
+          { name: 'Josh', age: 37 }
+        ]
+    })
   }
   return (
     <div className="App">
       <p>Test</p>
-      <UserInput />
-      <UserOutput name={name.persons[0].name} />
-      <UserOutput name={name.persons[1].name} />
-      <UserOutput name={name.persons[2].name} />
+      <UserInput changed={changeName} />
+      <UserOutput
+        name={name.persons[0].name} />
+      <UserOutput
+        name={name.persons[1].name}
+      />
+      <UserOutput
+        name={name.persons[2].name} />
     </div>
   );
 }
